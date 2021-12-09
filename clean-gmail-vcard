@@ -1,0 +1,7 @@
+# Yo
+
+- Remove lines starting blank space (multilines in Gmail output).
+- Remove item[0-9] before TITLE and ORG property.
+- Remove weird repitition of the address in ADR property.
+
+cat gmail-contacts.vcf | grep -v "^ " | sed -r 's/(.*ADR\;)(.*\;).*/\1\2/g' | sed -r 's/(item[0-9]).(TITLE|ORG)/\2/g'
